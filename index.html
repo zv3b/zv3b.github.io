@@ -4,11 +4,30 @@
   </head>
   <body>
     <h1 style="text-align:center"> Zv3B, een site bij Joëlchim Uitgevers©</h1>
-    <br> <br> <br>
-    <p style="text-align:center"> Speciaal gemaakt voor de leerlingenraad verkiezingen!</p>
+    <br>
+    <p style="text-align:center" id="change_me"> Speciaal gemaakt voor de leerlingenraad verkiezingen!</p>
+
+
+  <script> 
+    function RandomBerichtVoorpagina() {
+      const = document.getElementById('change_me');
+      let bericht = ["Stem Joachim", "jippie verkiezingen", "Op 21 November!", "Weg met de rechtse ideeën!", "Ik ga nederland veranderen!", "Breng een stem uit op 24 oktober -Joachim de Wild"]
+      
+      let randomNumber = Math.floor(Math.random() * 1) + 1;
+      
+      if (randomNumber === 1) {
+        let randomNumVoorBericht = Math.floor(Math.random() * 5) + 1;
+        let selectedBericht = bericht[randomNumVoorBericht];
+        change_me.textcontent = ${selectedBericht};
+      }
 
 
 
+      
+    }
+    window.addEventListener('load', RandomBerichtVoorpagina);
+  
+  </script>
 
   </body>
 
