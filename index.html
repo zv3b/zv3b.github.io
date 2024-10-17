@@ -10,7 +10,7 @@
 
   <script> 
     function RandomBerichtVoorpagina() {
-      const = document.getElementById('change_me');
+      const changer = document.getElementById('change_me');
       let bericht = ["Stem Joachim", "jippie verkiezingen", "Op 21 November!", "Weg met de rechtse ideeën!", "Ik ga nederland veranderen!", "Breng een stem uit op 24 oktober -Joachim de Wild"]
       
       let randomNumber = Math.floor(Math.random() * 1) + 1;
@@ -18,7 +18,7 @@
       if (randomNumber === 1) {
         let randomNumVoorBericht = Math.floor(Math.random() * 5) + 1;
         let selectedBericht = bericht[randomNumVoorBericht];
-        change_me.textcontent = ${selectedBericht};
+        changer.textContent = ${selectedBericht};
       }
 
 
