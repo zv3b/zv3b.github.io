@@ -13,14 +13,21 @@
       const changer = document.getElementById('change_me');
       let bericht = ["Stem Joachim", "jippie verkiezingen", "Op 21 November!", "Weg met de rechtse ideeën!", "Ik ga nederland veranderen!", "Breng een stem uit op 24 oktober -Joachim de Wild"]
       
-      let randomNumber = Math.floor(Math.random() * 1) + 1;
+      let randomNumber = Math.floor(Math.random() * 6) + 1;
       
       if (randomNumber === 1) {
-        let randomNumVoorBericht = Math.floor(Math.random() * 5) + 1;
-        let selectedBericht = bericht[randomNumVoorBericht];
-        changer.textContent = ${selectedBericht};
+        changer.textContent = 'Stem Joachim'
+      } else if (randomNumber === 2) {
+        changer.textContent = 'jippie, verkiezingen!'
+      } else if (randomNumber === 3) {
+        changer.textContent = 'Op 21 November!'
+      } else if (randomNumber === 4) {
+        changer.textContent = 'Weg met die rechtste ideeën!'
+      } else if (randomNumber === 5) {
+        changer.textContent = 'Ik ga naar Nederland veranderen?'
+      } else if (randomNumber === 6) {
+        changer.textContent = 'Breng een stem uit op --- Oktober! -Joachim de Wild, 2024'
       }
-
 
 
       
