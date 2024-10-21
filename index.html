@@ -13,20 +13,22 @@
       const changer = document.getElementById('change_me');
       let bericht = ["Stem Joachim", "jippie verkiezingen", "Op 21 November!", "Weg met de rechtse ideeën!", "Ik ga nederland veranderen!", "Breng een stem uit op 24 oktober -Joachim de Wild"]
       
-      let randomNumber = Math.floor(Math.random() * 6) + 1;
+      let randomNumber = Math.floor(Math.random() * 100) + 1;
       
-      if (randomNumber === 1) {
+      if (randomNumber <= 30) {
         changer.textContent = 'Stem Joachim'
-      } else if (randomNumber === 2) {
+      } else if (randomNumber <= 40) {
         changer.textContent = 'jippie, verkiezingen!'
-      } else if (randomNumber === 3) {
+      } else if (randomNumber <= 45) {
         changer.textContent = 'Op 21 November!'
-      } else if (randomNumber === 4) {
+      } else if (randomNumber <= 75) {
         changer.textContent = 'Weg met die rechtste ideeën!'
-      } else if (randomNumber === 5) {
+      } else if (randomNumber <= 85) {
         changer.textContent = 'Ik ga naar Nederland veranderen?'
-      } else if (randomNumber === 6) {
+      } else if (randomNumber <= 99) {
         changer.textContent = 'Breng een stem uit op --- Oktober! -Joachim de Wild, 2024'
+      } else if (randomNumber === 100) {
+        changer,textContent = 'Error 404 not voted on Joachim'
       }
 
 
