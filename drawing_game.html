@@ -69,7 +69,7 @@
   .tshirt-container {
     width: 500px;
     height: 400px;
-    background-image: url('tshirt.png'); /* replace with your T-shirt PNG path */
+    background-image: url('tshirt.png');
     background-size: cover;
     display: flex;
     align-items: center;
@@ -86,15 +86,15 @@
   }
 
   .caption {
-    max-width: 180px; /* Adjust width to fit within T-shirt image */
+    max-width: 180px;
     margin-top: 10px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #333;
     text-align: center;
-    word-wrap: break-word; /* Allows text to wrap to the next line */
-    line-height: 1.2; /* Adjust line height for readability */
+    word-wrap: break-word;
+    line-height: 1.2;
   }
 
   #vote-buttons {
@@ -186,8 +186,8 @@
     const drawingKey = `drawing${drawingCount}`;
     const captionKey = `caption${drawingCount}`;
 
-    localStorage.setItem(drawingKey, dataURL); // Store drawing
-    localStorage.setItem(captionKey, caption); // Store caption
+    localStorage.setItem(drawingKey, dataURL);
+    localStorage.setItem(captionKey, caption);
     drawingKeys.push(drawingKey); 
 
     let randomBeurtBericht = Math.floor(Math.random() * 5);
@@ -277,6 +277,34 @@
   });
 
   canvas.addEventListener('mousemove', draw);
+
+  canvas.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+    drawing = true;
+    const touch = event.touches[0];
+    const mouseEvent = new MouseEvent("mousedown", {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+  });
+
+  canvas.addEventListener('touchend', (event) => {
+    event.preventDefault();
+    drawing = false;
+    const mouseEvent = new MouseEvent("mouseup", {});
+    canvas.dispatchEvent(mouseEvent);
+  });
+
+  canvas.addEventListener('touchmove', (event) => {
+    event.preventDefault();
+    const touch = event.touches[0];
+    const mouseEvent = new MouseEvent("mousemove", {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+  });
 
   function draw(event) {
     if (!drawing) return;
