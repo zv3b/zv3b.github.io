@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Het T-shirt Tekenspel</title>
+<link rel="icon" href="duckduck.png" type="image/x-icon">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: coral;
+  }
+
+  #canvas {
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: crosshair;
+    margin-top: 10px;
+  }
+
+  .color-button {
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    cursor: pointer;
+    outline: none;
+  }
+
+  #save-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: #69af6a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #clear-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: #b45323;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  #voting-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .tshirt-container {
+    width: 500px;
+    height: 400px;
+    background-image: url('tshirt.png'); /* replace with your T-shirt PNG path */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+    position: relative;
+  }
+
+  .thumbnail {
+    width: 200px;
+    height: 200px;
+    border: 0px solid #000;
+  }
+
+  .caption {
+    max-width: 180px; /* Adjust width to fit within T-shirt image */
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    word-wrap: break-word; /* Allows text to wrap to the next line */
+    line-height: 1.2; /* Adjust line height for readability */
+  }
+
+  #vote-buttons {
+    margin-top: 10px;
+  }
+
+  #vote-buttons button {
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+</style>
+</head>
+<body>
+    <h1 id="text_important" style="text-align: center;"> Het is speler 1 zijn beurt! Zou je hem het apparaat willen geven?</h1>
+    <br>
+
+<div id="controls">
+    <button class="color-button" style="background-color: #FF0000;" onclick="setColor('#FF0000')"></button>
+    <button class="color-button" style="background-color: #98FB98;" onclick="setColor('#98FB98')"></button>
+    <button class="color-button" style="background-color: #007FFF;" onclick="setColor('#007FFF')"></button>
+    <button class="color-button" style="background-color: #FFFF00;" onclick="setColor('#FFFF00')"></button>
+    <button class="color-button" style="background-color: #000000;" onclick="setColor('#000000')"></button>
+    <button class="color-button" style="background-color: #a671b0;" onclick="setColor('#a671b0')"></button>
+  
+  <button id="clear-button" onclick="clearCanvas()">Verwijder alles</button>
+  <button id="save-button" onclick="saveDrawing()">Opslaan</button>
+</div>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+<div id="voting-section">
+  <div class="tshirt-container">
+    <img id="drawing1" class="thumbnail" />
+    <div id="caption1" class="caption"></div>
+  </div>
+  <div class="tshirt-container">
+    <img id="drawing2" class="thumbnail" />
+    <div id="caption2" class="caption"></div>
+  </div>
+  <div id="vote-buttons">
+    <button onclick="vote(1)">De bovenste!</button>
+    <button onclick="vote(2)">De onderste!</button>
+  </div>
+</div>
+
+<script>
+  const text_imp = document.getElementById('text_important');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const votingSection = document.getElementById('voting-section');
+  let drawing = false;
+  let drawingCount = 0; 
+  let drawingKeys = [];
+  let round = 0; 
+  let finalists = []; 
+  let playerCount = 1;
+
+  const captions = ["Death is the solution to all problems. No man - no problem.", "Shrek is love, shrek is live", "BEHIND YOU!!!", "I'm so cool",  "Word, K-Keep it Real",  "Mr. How are you?","Supergaaf","Namaak van de oneindige leegte:","'Een Meesterwerk'",
+    "Ik wanneer eten", "*Music starts playing*", "'Een probleem voor de samenleving.'"
+  ];
+  const aanDeBeurt = [", waar blijf je? Het is aan jouw!", ", veel succes d'r mee!", " de potloden wachten op je!", "is aan de beurt!", " pak het apparaat snel, snel, snel!"]
+
+  context.strokeStyle = '#000000';
+  context.lineWidth = 7;
+  context.lineCap = 'round';
+
+  function setColor(color) {
+    context.strokeStyle = color;
+  }
+
+  function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function getRandomCaption() {
+    return captions[Math.floor(Math.random() * captions.length)];
+  }
+
+  function saveDrawing() {
+    if (drawingCount >= 4) {
+      alert("Game finished! You've already saved 4 drawings.");
+      return;
+    }
+
+    const dataURL = canvas.toDataURL();
+    const caption = getRandomCaption();
+    drawingCount++;
+    const drawingKey = `drawing${drawingCount}`;
+    const captionKey = `caption${drawingCount}`;
+
+    localStorage.setItem(drawingKey, dataURL); // Store drawing
+    localStorage.setItem(captionKey, caption); // Store caption
+    drawingKeys.push(drawingKey); 
+
+    let randomBeurtBericht = Math.floor(Math.random() * 5);
+    let beurtBericht = aanDeBeurt[randomBeurtBericht];
+
+    if (drawingCount !== 4) {
+        playerCount++;
+        text_imp.textContent = `Speler ${playerCount} ${beurtBericht}`;
+    }
+
+    clearCanvas();
+
+    if (drawingCount === 4) {
+      startVoting();
+      text_imp.textContent = `Het is tijd voor de stemronde! Kies jullie favoriet!`
+    }
+  }
+
+  function startVoting() {
+    document.getElementById('controls').style.display = 'none';
+    canvas.style.display = 'none';
+    votingSection.style.display = 'flex';
+
+    loadDrawingsForRound();
+  }
+
+  function loadDrawingsForRound() {
+    const caption1 = document.getElementById('caption1');
+    const caption2 = document.getElementById('caption2');
+
+    if (round < 2) {
+      const drawingKey1 = drawingKeys[round * 2];
+      const drawingKey2 = drawingKeys[round * 2 + 1];
+      document.getElementById('drawing1').src = localStorage.getItem(drawingKey1);
+      document.getElementById('drawing2').src = localStorage.getItem(drawingKey2);
+      caption1.textContent = localStorage.getItem(`caption${round * 2 + 1}`);
+      caption2.textContent = localStorage.getItem(`caption${round * 2 + 2}`);
+    } else {
+      document.getElementById('drawing1').src = localStorage.getItem(finalists[0]);
+      document.getElementById('drawing2').src = localStorage.getItem(finalists[1]);
+      caption1.textContent = localStorage.getItem(finalists[0].replace("drawing", "caption"));
+      caption2.textContent = localStorage.getItem(finalists[1].replace("drawing", "caption"));
+      text_imp.textContent = `Dit is de finaleronde! Welke van deze twee vinden jullie het leukst?`
+    }
+  }
+
+  function vote(choice) {
+    if (round < 2) {
+      const winningKey = drawingKeys[round * 2 + (choice - 1)];
+      finalists.push(winningKey);
+    } else {
+      text_imp.textContent = `De winnaar is geselecteerd!`
+      document.getElementById('voting-section').style.display = 'none';
+      displayFinalWinner(finalists[choice - 1]);
+    }
+
+    round++;
+    if (round < 3) {
+      loadDrawingsForRound();
+    }
+  }
+
+  function displayFinalWinner(winnerKey) {
+    const winnerContainer = document.createElement('div');
+    winnerContainer.classList.add('tshirt-container');
+    
+    const winnerImg = document.createElement('img');
+    winnerImg.src = localStorage.getItem(winnerKey);
+    winnerImg.classList.add('thumbnail');
+    
+    const winnerCaption = document.createElement('div');
+    winnerCaption.classList.add('caption');
+    winnerCaption.textContent = localStorage.getItem(winnerKey.replace("drawing", "caption"));
+    
+    winnerContainer.appendChild(winnerImg);
+    winnerContainer.appendChild(winnerCaption);
+    document.body.appendChild(winnerContainer);
+  }
+
+  canvas.addEventListener('mousedown', () => {
+    drawing = true;
+  });
+
+  canvas.addEventListener('mouseup', () => {
+    drawing = false;
+    context.beginPath();
+  });
+
+  canvas.addEventListener('mousemove', draw);
+
+  function draw(event) {
+    if (!drawing) return;
+
+    context.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+  }
+</script>
+
+</body>
+</html>
