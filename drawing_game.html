@@ -267,6 +267,7 @@
     document.body.appendChild(winnerContainer);
   }
 
+// Variables
 let drawing = false;
 
 // Function to start drawing
@@ -297,7 +298,7 @@ function draw(event) {
     if (!drawing) return;
     event.preventDefault();  // Prevent scrolling on touch devices
 
-     let x, y;
+    let x, y;
     if (event.type.includes("touch")) {
         // Adjust for touch
         const touch = event.touches[0];
