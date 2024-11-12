@@ -297,7 +297,6 @@ canvas.addEventListener('touchmove', draw);
 function draw(event) {
     if (!drawing) return;
     event.preventDefault();  // Prevent scrolling on touch devices
-
     let x, y;
     if (event.type.includes("touch")) {
         // Adjust for touch
