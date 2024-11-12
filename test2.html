@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drawing Canvas with Color Buttons</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Full viewport height */
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #canvas {
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: crosshair;
+    margin-top: 15px;
+  }
+
+  /* Color button styles */
+  .color-button {
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    cursor: pointer;
+    outline: none;
+  }
+  #clear-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: #FF6347; /* Tomato color */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Color Buttons -->
+<div id="color-buttons">
+  <button class="color-button" style="background-color: #FF0000;" onclick="setColor('#FF0000')"></button>
+  <button class="color-button" style="background-color: #98FB98;" onclick="setColor('#98FB98')"></button>
+  <button class="color-button" style="background-color: #007FFF;" onclick="setColor('#007FFF')"></button>
+  <button class="color-button" style="background-color: #FFFF00;" onclick="setColor('#FFFF00')"></button>
+  <button class="color-button" style="background-color: #000000;" onclick="setColor('#000000')"></button>
+  <button class="color-button" style="background-color: #a671b0;" onclick="setColor('#a671b0')"></button>
+</div>
+
+<button id="clear-button" onclick="clearCanvas()">Clear</button>
+
+
+
+<!-- Canvas Element -->
+<canvas id="canvas" width="1500" height="800"></canvas>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  let drawing = false;
+
+  // Default drawing color
+  context.strokeStyle = '#000000';
+
+  window.onload = loadCanvas;
+
+  // Function to change the drawing color
+  function setColor(color) {
+    context.strokeStyle = color;
+  }
+
+  function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    localStorage.removeItem('savedCanvas');
+  }
+
+  function autosaveCanvas() {
+    const dataURL = canvas.toDataURL();
+    localStorage.setItem('savedCanvas', dataURL);
+  }
+
+  function loadCanvas() {
+    const savedCanvas = localStorage.getItem('savedCanvas');
+    if (savedCanvas) {
+      const img = new Image();
+      img.src = savedCanvas;
+      img.onload = () => {
+        context.drawImage(img, 0, 0);
+      };
+    }
+  }
+
+  canvas.addEventListener('mousedown', () => {
+    drawing = true;
+  });
+
+  canvas.addEventListener('mouseup', () => {
+    drawing = false;
+    context.beginPath();
+    autosaveCanvas();
+  });
+
+  canvas.addEventListener('mousemove', draw);
+
+  function draw(event) {
+    if (!drawing) return;
+
+    context.lineWidth = 10;
+    context.lineCap = 'round';
+
+    context.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+
+    autosaveCanvas();
+  }
+</script>
+
+</body>
+</html>
