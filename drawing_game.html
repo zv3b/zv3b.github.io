@@ -136,6 +136,7 @@
 </div>
 
 <canvas id="canvas" width="600" height="400"></canvas>
+ <h1 id="thema"> Thema: </h1>
 <div id="voting-section">
   <div class="tshirt-container">
     <img id="drawing1" class="thumbnail" />
@@ -157,6 +158,7 @@
 
  
   const text_imp = document.getElementById('text_important');
+ const thema = document.getElementById('thema')
   const canvas = document.getElementById('canvas');
   const context = canvas.getContext('2d');
   const votingSection = document.getElementById('voting-section');
@@ -170,10 +172,12 @@
   const captions = ["Death is the solution to all problems. No man - no problem.", "Shrek is love, shrek is live", "BEHIND YOU!!!", "I'm so cool", "Supergaaf","Namaak van de oneindige leegte:","'Een Meesterwerk'",
     "Ik wanneer eten", "*Music starts playing*", "'Een probleem voor de samenleving.'", "Mijn gedachten.", "Neen.", "And thats how I met your mother", "I trust no one, not even myself.", "'Never trust a friend who is silent.' -Sun tzu, art of war",
     "Coole gozer gespot!!1!!", "Never gonna give you up, never gonna let you down...", "... normale dag in mijn leven.", "Je kunt me niks doen, ik ben COOL", "Sponsered by Dwayne the 'Rock' Johnson", "Powered by Android", 
-    "I am Steve", "Made by AI", "Mogelijk gemaakt door die gast boven dit t-shirt!"
+    "I am Steve", "Made by AI", "Mogelijk gemaakt door die gast boven dit t-shirt!", "#nofilter"
   ];
   const aanDeBeurt = [", waar blijf je? Het is aan jouw!", ", veel succes d'r mee!", " de potloden wachten op je!", "is aan de beurt!", " pak het apparaat snel, snel, snel!"]
 
+ const themas = ["Kaas", "Sovjet-Unie", "Eten", "Politiek Figuur", "Minecraft", "Joachim de Wild", "Woestijn", "Stilleven", "Beroemd Schilderij", "Beroemd persoon", "Weet ik veel, verzin zelf wat?"];
+ 
   context.strokeStyle = '#000000';
   context.lineWidth = 7;
   context.lineCap = 'round';
@@ -209,10 +213,17 @@
     let randomBeurtBericht = Math.floor(Math.random() * 5);
     let beurtBericht = aanDeBeurt[randomBeurtBericht];
 
+   let randomThema = Math.floor(Math.random() * 12)
+   let selectedThema = themas[selectedThema];
+
+   thema.textContent = `Thema: ${selectedThema}`;
+   
     if (drawingCount !== 4) {
         playerCount++;
         text_imp.textContent = `Speler ${playerCount} ${beurtBericht}`;
     }
+
+ 
 
     clearCanvas();
 
