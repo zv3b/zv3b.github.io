@@ -136,7 +136,6 @@
 </div>
 
 <canvas id="canvas" width="600" height="400"></canvas>
- <h1 id="thema"> Thema: </h1>
 <div id="voting-section">
   <div class="tshirt-container">
     <img id="drawing1" class="thumbnail" />
@@ -175,8 +174,6 @@
     "I am Steve", "Made by AI", "Mogelijk gemaakt door die gast boven dit t-shirt!", "#nofilter"
   ];
   const aanDeBeurt = [", waar blijf je? Het is aan jouw!", ", veel succes d'r mee!", " de potloden wachten op je!", "is aan de beurt!", " pak het apparaat snel, snel, snel!"]
-
- const themas = ["Kaas", "Sovjet-Unie", "Eten", "Politiek Figuur", "Minecraft", "Joachim de Wild", "Woestijn", "Stilleven", "Beroemd Schilderij", "Beroemd persoon", "Weet ik veel, verzin zelf wat?"];
  
   context.strokeStyle = '#000000';
   context.lineWidth = 7;
@@ -212,11 +209,6 @@
 
     let randomBeurtBericht = Math.floor(Math.random() * 5);
     let beurtBericht = aanDeBeurt[randomBeurtBericht];
-
-   let randomThema = Math.floor(Math.random() * 12)
-   let selectedThema = themas[selectedThema];
-
-   thema.textContent = `Thema: ${selectedThema}`;
    
     if (drawingCount !== 4) {
         playerCount++;
