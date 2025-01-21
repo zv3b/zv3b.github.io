@@ -59,6 +59,7 @@
         font-family: "Signika", serif;
         display: flex;
         border-radius: 15px;
+        position: relative; /* Needed for absolute positioning */
       }
       .standpunten > p {
         width: 400px;
@@ -68,6 +69,11 @@
         color: #1B1C1A;
         
         border-radius: 10px;
+          position: absolute; /* Enable absolute positioning */
+        top: 50%; /* Move to the center vertically */
+        left: 50%; /* Move to the center horizontally */
+        transform: translate(-50%, -50%); /* Adjust for the element's size */
+        margin: 0; /* Reset margin if any */
       }
     </style>
   </head>
