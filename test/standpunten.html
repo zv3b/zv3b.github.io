@@ -59,7 +59,6 @@
         font-family: "Signika", serif;
         display: flex;
         border-radius: 15px;
-        position: relative; /* Needed for absolute positioning */
         text-align: center;
       }
       .standpunten > p {
@@ -71,11 +70,8 @@
         padding: 10px;
         
         border-radius: 10px;
-        position: absolute; /* Enable absolute positioning */
-        top: 50%; /* Move to the center vertically */
-        left: 50%; /* Move to the center horizontally */
-        transform: translate(-50%, -50%); /* Adjust for the element's size */
-        margin: 0; /* Reset margin if any */
+        margin-left: 50px;
+        margin-top: 50px;
       }
       .standpunten > .title {
         font-size: 24px;
