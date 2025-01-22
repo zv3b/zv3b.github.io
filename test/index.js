@@ -10,7 +10,7 @@ function veranderTekst() {
   if (buttonId === "info") {
     window.location.href = "zv3b.github.io/standpunten.html"; 
   } else if (buttonId === "standpunt") {
-    window.location.href = "zv3b.github.io/standpunten.html"; /
+    window.location.href = "zv3b.github.io/standpunten.html"; 
   } else if (buttonId === "verandering") {
     window.location.href = "zv3b.github.io/standpunten.html"; 
   } else if (buttonId === "overons") {
