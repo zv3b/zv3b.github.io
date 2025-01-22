@@ -15,7 +15,5 @@ function veranderTekst() {
     window.location.href = "zv3b.github.io/standpunten.html"; 
   } else if (buttonId === "overons") {
     window.location.href = "zv3b.github.io/standpunten.html";
-  } else {
-    document.body.style.backgroundColor = "green"; 
-  }
+  } 
 }
