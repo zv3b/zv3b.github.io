@@ -1,7 +1,6 @@
 <html>
   <head>
     <title> Joachim's Standpunten! </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -51,10 +50,19 @@
         font-family: "Signika", serif;
         text-align: center;
       }
+      .wrapper {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        min-height: 100vh; /* Full viewport height */
+        background-color: #E8EBC7; /* Match body background color */
+      }
       .rij1 {
         display: flex;
         background-color: #E8EBC7;
         color: #FFFFFF;
+        flex-wrap: wrap; /* Ensure it wraps on small screens */
+        gap: 20px;
         
       }
       .standpunten {
@@ -120,6 +128,7 @@
       </div>
       <h1> Joachim's Standpunten </h1>
     <br>
+    <div class="wrapper">
     <div class="rij1">
     <div class="standpunten"> 
         <br>
@@ -151,6 +160,7 @@
           </p>
       
       </div>
+    </div>
     </div>
 
     <br>
