@@ -1,24 +1,17 @@
-let progressbar = document.getElementById("progressbar");
-let stellingenRemainingText = document.getElementById("remainingStandpunten");
-
-// json file path
-const jsonPath = "/config.json";
+// Set variables
+const progressbar = document.getElementById("progressbar");
+const stellingenRemainingText = document.getElementById("remainingStandpunten");
 
 let stellingen;
-
-let stellingenTitle = ["Spawn Protection", "Munteenheid", "Subsidies", "Pvp", "Spawn", "Machtenscheiding", "Farms op spawn", "Belasting", "Overheid"];
-let stellingenText = ["Spawn protection moet de huidige grootte behouden", "Elke speler is vrij om zijn eigen valuta te maken", "De overheid kan eenmalige subsidies aan bedrijven aanbieden, in ruil voor een klein percentage van de opbrengst van het betreffende bedrijf", 
-  "Er moeten scherpere regels voor PVP worden ingesteld",
-  "Spawn wordt onderverdeeld in kleinere gebieden", "Spelers worden vertegenwoordigd door middel van een Tweede Kamer, die gekozen wordt door middel van partijlijsten", 
-  "Er worden publieke farms opgericht om onder andere samenwerking te stimuleren",
-"Belasting wordt ingevoerd", "De overheid blijft op afstand, maar grijpt in om vrijheid belastende ideeën in te perken en af te straffen"
-];
 
 let stellingTitleDisplay = document.getElementById("standpuntTitle");
 let stellingTextDisplay = document.getElementById("standpuntText");
 
 let progressbarCurrentProgress = 1;
 let maxStellingen;
+
+// json file path
+const jsonPath = "/config.json";
 
 let partijen = [
   {name: "VVD", score: 0, color: "#213966", meningen: ["eens","eens","oneens","oneens","oneens","oneens","eens", "neutraal", "neutraal"]},
@@ -28,9 +21,10 @@ let partijen = [
   {name: "PVB", score: 0, color: "#610814", meningen: ["neutraal","neutraal","neutraal","eens","eens","eens","neutraal", "neutraal", "neutraal"]}
 ];
 
-window.onload = function() {
+window.onload = async function() {
   await getConfig();
   progressbar.max = maxStellingen;
+  progressbar.value = progressbarCurrentProgress;
 
   updateRemainingStellingen();
   newStelling();
