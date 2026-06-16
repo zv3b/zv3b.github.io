@@ -32,6 +32,13 @@
             "kleur": "#80bd2f",
             "logo": "mcjonalds.png",
             "score": 0
+        },
+        {
+            "naam": "Gekkies Verenigd",
+            "meningen": [2,1],
+            "kleur": "#80bd2f",
+            "logo": "gekkiesver.png",
+            "score": 0
         }
     ]
 }
