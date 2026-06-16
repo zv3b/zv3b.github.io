@@ -1,0 +1,32 @@
+{
+    "titel": "Stemwijzer Maker",
+    "stellingen": [
+        {
+        "id": 1,
+        "stellingTitel": "Spawn Protection",
+        "stellingTekst": "Spawn protection moet de huidige grootte behouden"
+        },
+        {
+        "id": 2,
+        "stellingTitel": "Munteenheid",
+        "stellingTekst": "Elke speler is vrij om zijn eigen valuta te maken"
+        }
+    ],
+
+    "partijen": [
+        {
+            "naam": "Progressief Kaas",
+            "uitleg": ["het aantal cijfers moet overeenkomen met het aantal stellingen.",
+                        "0 = oneens, 1 = neutraal, 2 = eens"],
+            "meningen": [0,2],
+            "kleur": "#50ab4f",
+            "logo": "kaas.png"
+        },
+        {
+            "naam": "McJonalds Unie",
+            "meningen": [1,0],
+            "kleur": "#80bd2f",
+            "logo": "mcjonalds.png"
+        }
+    ]
+}
