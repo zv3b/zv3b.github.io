@@ -85,20 +85,20 @@ function getTop3() {
   let percentage3 = ((top3[2].score / maxStellingen) * 100).toFixed(1);
 
   //number 1
-  document.getElementById("img1").src = `images/partijen/${top3[0].name.toLowerCase()}`;
-  document.getElementById("img1").style.backgroundColor = top3[0].color;
+  document.getElementById("img1").src = `images/partijen/${top3[0].logo}`;
+  document.getElementById("img1").style.backgroundColor = top3[0].kleur;
   document.getElementById("percentage1").textContent = `${percentage1}%`;
-  document.getElementById("partij1Naam").textContent = top3[0].name;
+  document.getElementById("partij1Naam").textContent = top3[0].naam;
 
   //number 2
-  document.getElementById("img2").src = `images/partijen/${top3[1].name.toLowerCase()}`;
-  document.getElementById("img2").style.backgroundColor = top3[1].color;
+  document.getElementById("img2").src = `images/partijen/${top3[1].logo}`;
+  document.getElementById("img2").style.backgroundColor = top3[1].kleur;
   document.getElementById("percentage2").textContent = `${percentage2}%`;
-  document.getElementById("partij2Naam").textContent = top3[1].name;
+  document.getElementById("partij2Naam").textContent = top3[1].naam;
 
   //number 3
-  document.getElementById("img3").src = `images/partijen/${top3[2].name.toLowerCase()}`;
-  document.getElementById("img3").style.backgroundColor = top3[2].color;
+  document.getElementById("img3").src = `images/partijen/${top3[2].logo}`;
+  document.getElementById("img3").style.backgroundColor = top3[2].kleur;
   document.getElementById("percentage3").textContent = `${percentage3}%`;
-  document.getElementById("partij3Naam").textContent = top3[2].name;
+  document.getElementById("partij3Naam").textContent = top3[2].naam;
 }
