@@ -4,6 +4,8 @@ let stellingenRemainingText = document.getElementById("remainingStandpunten");
 // json file path
 const jsonPath = "/config.json";
 
+let stellingen;
+
 let stellingenTitle = ["Spawn Protection", "Munteenheid", "Subsidies", "Pvp", "Spawn", "Machtenscheiding", "Farms op spawn", "Belasting", "Overheid"];
 let stellingenText = ["Spawn protection moet de huidige grootte behouden", "Elke speler is vrij om zijn eigen valuta te maken", "De overheid kan eenmalige subsidies aan bedrijven aanbieden, in ruil voor een klein percentage van de opbrengst van het betreffende bedrijf", 
   "Er moeten scherpere regels voor PVP worden ingesteld",
@@ -16,7 +18,7 @@ let stellingTitleDisplay = document.getElementById("standpuntTitle");
 let stellingTextDisplay = document.getElementById("standpuntText");
 
 let progressbarCurrentProgress = 1;
-let maxStellingen = stellingenTitle.length;
+let maxStellingen;
 
 progressbar.max = maxStellingen;
 
@@ -34,12 +36,16 @@ window.onload = function() {
   getConfig();
 }
 
-async function getConfig(value) {
+async function getConfig() {
     const response = await fetch(jsonPath);
     const config = await response.json();
     
     const title = config.titel;
-    document.title = title;
+    document.title = title; //debug
+
+    maxStellingen = config.stellingen.length
+    stellingen =  config.stellingen;
+
 }
 
 function progressbarEvolve() {
@@ -58,8 +64,8 @@ function updateRemainingStellingen() {
 }
 
 function newStelling() {
-  stellingTitleDisplay.textContent = `${stellingenTitle[progressbarCurrentProgress - 1]}`; 
-  stellingTextDisplay.textContent = `${stellingenText[progressbarCurrentProgress - 1]}`; 
+  stellingTitleDisplay.textContent = `${stellingen[progressbarCurrentProgress - 1].stellingTitel}`; 
+  stellingTextDisplay.textContent = `${stellingen[progressbarCurrentProgress - 1].stellingTekst}`; 
 }
 
 function updateScore(keuze) {
