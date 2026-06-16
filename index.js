@@ -20,8 +20,6 @@ let stellingTextDisplay = document.getElementById("standpuntText");
 let progressbarCurrentProgress = 1;
 let maxStellingen;
 
-progressbar.max = maxStellingen;
-
 let partijen = [
   {name: "VVD", score: 0, color: "#213966", meningen: ["eens","eens","oneens","oneens","oneens","oneens","eens", "neutraal", "neutraal"]},
   {name: "NSB", score: 0, color: "#e50000ff", meningen: ["oneens","oneens","eens","oneens","eens","oneens","neutraal", "neutraal", "neutraal"]},
@@ -31,9 +29,11 @@ let partijen = [
 ];
 
 window.onload = function() {
+  await getConfig();
+  progressbar.max = maxStellingen;
+
   updateRemainingStellingen();
   newStelling();
-  getConfig();
 }
 
 async function getConfig() {
