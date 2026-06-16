@@ -12,21 +12,26 @@
         "stellingTekst": "Elke speler is vrij om zijn eigen valuta te maken"
         }
     ],
+    "uitleg-partijen": ["het aantal cijfers bij meningen moet overeenkomen met het aantal stellingen.",
+                        "0 = oneens, 1 = neutraal, 2 = eens",
+                        "score: 0 --> MOET 0 blijven!",
+                        "kleur is de achtergrond te zien bij het resultaat, achter het logo",
+                        "logo is een afbeelding die wordt geplaatst bij het resultaat"],
 
     "partijen": [
         {
             "naam": "Progressief Kaas",
-            "uitleg": ["het aantal cijfers moet overeenkomen met het aantal stellingen.",
-                        "0 = oneens, 1 = neutraal, 2 = eens"],
             "meningen": [0,2],
             "kleur": "#50ab4f",
-            "logo": "kaas.png"
+            "logo": "kaas.png",
+            "score": 0
         },
         {
             "naam": "McJonalds Unie",
             "meningen": [1,0],
             "kleur": "#80bd2f",
-            "logo": "mcjonalds.png"
+            "logo": "mcjonalds.png",
+            "score": 0
         }
     ]
 }
