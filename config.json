@@ -2,12 +2,10 @@
     "titel": "Stemwijzer Maker",
     "stellingen": [
         {
-        "id": 1,
         "stellingTitel": "Spawn Protection",
         "stellingTekst": "Spawn protection moet de huidige grootte behouden"
         },
         {
-        "id": 2,
         "stellingTitel": "Munteenheid",
         "stellingTekst": "Elke speler is vrij om zijn eigen valuta te maken"
         }
