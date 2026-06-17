@@ -1,13 +1,17 @@
 {
-    "titel": "Stemwijzer Maker",
+    "titel": "Stemwijzer",
     "stellingen": [
         {
-        "stellingTitel": "Spawn Protection",
-        "stellingTekst": "Spawn protection moet de huidige grootte behouden"
+        "stellingTitel": "Kaas",
+        "stellingTekst": "Kaasproductie moet worden verdubbeld"
         },
         {
-        "stellingTitel": "Munteenheid",
-        "stellingTekst": "Elke speler is vrij om zijn eigen valuta te maken"
+        "stellingTitel": "Kaassoorten",
+        "stellingTekst": "Het aantal kaassoorten moeten worden verbreed"
+        },
+        {
+        "stellingTitel": "Kaassoufflé",
+        "stellingTekst": "Kaassoufflé's moeten overal verkocht worden"
         }
     ],
     "uitleg-partijen": ["het aantal cijfers bij meningen moet overeenkomen met het aantal stellingen.",
