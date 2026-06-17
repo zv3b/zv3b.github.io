@@ -11,7 +11,7 @@
         },
         {
         "stellingTitel": "Kaassoufflé",
-        "stellingTekst": "Kaassoufflé's moeten overal verkocht worden"
+        "stellingTekst": "Kaassoufflé's moeten in elke winkel verkocht worden"
         }
     ],
     "uitleg-partijen": ["het aantal cijfers bij meningen moet overeenkomen met het aantal stellingen.",
@@ -23,21 +23,21 @@
     "partijen": [
         {
             "naam": "Progressief Kaas",
-            "meningen": [0,2],
+            "meningen": [2,0,1],
             "kleur": "#50ab4f",
             "logo": "kaas.png",
             "score": 0
         },
         {
             "naam": "McJonalds Unie",
-            "meningen": [1,0],
+            "meningen": [2,2,0],
             "kleur": "#80bd2f",
             "logo": "mcjonalds.png",
             "score": 0
         },
         {
             "naam": "Gekkies Verenigd",
-            "meningen": [2,1],
+            "meningen": [0,1,0],
             "kleur": "#80bd2f",
             "logo": "gekkiesver.png",
             "score": 0
