@@ -24,21 +24,21 @@
         {
             "naam": "Progressief Kaas",
             "meningen": [2,0,1],
-            "kleur": "#50ab4f",
+            "kleur": "#fcba03",
             "logo": "kaas.png",
             "score": 0
         },
         {
             "naam": "McJonalds Unie",
             "meningen": [2,2,0],
-            "kleur": "#80bd2f",
+            "kleur": "#c90a00",
             "logo": "mcjonalds.png",
             "score": 0
         },
         {
             "naam": "Gekkies Verenigd",
             "meningen": [0,1,0],
-            "kleur": "#80bd2f",
+            "kleur": "#4f87ff",
             "logo": "gekkiesver.png",
             "score": 0
         }
