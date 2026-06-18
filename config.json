@@ -12,6 +12,18 @@
         {
         "stellingTitel": "Kaassoufflé",
         "stellingTekst": "Kaassoufflé's moeten in elke winkel verkocht worden"
+        },
+        {
+        "stellingTitel": "Grondwetswijziging",
+        "stellingTekst": "Gevangene mogen geen kaas meer consumeren"
+        },
+        {
+        "stellingTitel": "'Neppe' kaas",
+        "stellingTekst": "Kazen die niet 95% bestaan uit melk, mogen nergens verkocht worden"
+        },
+        {
+        "stellingTitel": "Kaas verspilling",
+        "stellingTekst": "Kaas mag niet meer weggegooid worden, alles moet worden geconsumeerd"
         }
     ],
     "uitleg-partijen": ["het aantal cijfers bij meningen moet overeenkomen met het aantal stellingen.",
@@ -23,21 +35,21 @@
     "partijen": [
         {
             "naam": "Progressief Kaas",
-            "meningen": [2,0,1],
+            "meningen": [2,0,1,1,2,0],
             "kleur": "#fcba03",
             "logo": "kaas.png",
             "score": 0
         },
         {
             "naam": "McJonalds Unie",
-            "meningen": [2,2,0],
+            "meningen": [2,2,0,2,2,2],
             "kleur": "#c90a00",
             "logo": "mcjonalds.png",
             "score": 0
         },
         {
             "naam": "Gekkies Verenigd",
-            "meningen": [0,1,0],
+            "meningen": [0,1,0,0,1,2],
             "kleur": "#4f87ff",
             "logo": "gekkiesverenigd.png",
             "score": 0
