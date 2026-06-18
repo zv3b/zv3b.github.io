@@ -39,8 +39,8 @@ async function getConfig() {
     stellingen =  config.stellingen;
     partijen = config.partijen;
 
-    stemwijzerTitel = config.stemwijzer-naam;
-    stemwijzerBeschrijving = config.stemwijzer-beschrijving;
+    stemwijzerTitel = config.stemwijzernaam;
+    stemwijzerBeschrijving = config.stemwijzerbeschrijving;
 
 }
 
