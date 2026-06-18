@@ -21,6 +21,8 @@ let partijen;
 
 window.onload = async function() {
   await getConfig();
+  progressbarCurrentProgress = 1;
+
   progressbar.max = maxStellingen;
   progressbar.value = progressbarCurrentProgress;
 
