@@ -1,5 +1,7 @@
 {
     "titel": "Stemwijzer",
+    "stemwijzer-naam": "Kaasverkiezingen 2026",
+    "stemwijzer-beschrijving": "Test je kazige voorkeur aan de hand van 6 stellingen",
     "stellingen": [
         {
         "stellingTitel": "Kaas",
