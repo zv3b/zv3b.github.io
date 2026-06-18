@@ -10,18 +10,16 @@ let stellingTextDisplay = document.getElementById("standpuntText");
 let progressbarCurrentProgress = 1;
 let maxStellingen;
 
-// index.html texts
-let stemwijzerTitel = document.getElementById("stemwijzerNaam");
-let stemwijzerBeschrijving = document.getElementById("stemwijzerBeschrijving");
-
 // json file path
 const jsonPath = "/config.json";
 
 let partijen;
 
 window.onload = async function() {
+  const stemwijzerTitel = document.getElementById("stemwijzerNaam");
+  const stemwijzerBeschrijving = document.getElementById("stemwijzerBeschrijving");
+  
   await getConfig();
-  progressbarCurrentProgress = 1;
 
   progressbar.max = maxStellingen;
   progressbar.value = progressbarCurrentProgress;
