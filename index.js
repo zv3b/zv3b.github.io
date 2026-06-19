@@ -10,15 +10,15 @@ let stellingTextDisplay = document.getElementById("standpuntText");
 let progressbarCurrentProgress = 1;
 let maxStellingen;
 
+let stemwijzerTitel = document.getElementById("stemwijzerNaam");
+let stemwijzerBeschrijving = document.getElementById("stemwijzerBeschrijving");
+
 // json file path
 const jsonPath = "/config.json";
 
 let partijen;
 
 window.onload = async function() {
-  const stemwijzerTitel = document.getElementById("stemwijzerNaam");
-  const stemwijzerBeschrijving = document.getElementById("stemwijzerBeschrijving");
-  
   await getConfig();
 
   progressbar.max = maxStellingen;
@@ -39,8 +39,8 @@ async function getConfig() {
     stellingen =  config.stellingen;
     partijen = config.partijen;
 
-    stemwijzerTitel.textContent = config.stemwijzernaam;
-    stemwijzerBeschrijving.textContent = config.stemwijzerbeschrijving;
+    //stemwijzerTitel.textContent = config.stemwijzernaam;
+    //stemwijzerBeschrijving.textContent = config.stemwijzerbeschrijving;
 
 }
 
