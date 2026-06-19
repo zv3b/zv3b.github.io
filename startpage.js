@@ -10,6 +10,6 @@ async function getConfig() {
     const response = await fetch(jsonPath);
     const config = await response.json();
     
-    stemwijzerTitel.textContent = config.stemwijzernaam;
-    stemwijzerBeschrijving.textContent = config.stemwijzerbeschrijving;
+    //stemwijzerTitel.textContent = config.stemwijzernaam;
+    //stemwijzerBeschrijving.textContent = config.stemwijzerbeschrijving;
 }
