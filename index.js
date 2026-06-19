@@ -38,14 +38,6 @@ async function getConfig() {
     maxStellingen = config.stellingen.length
     stellingen =  config.stellingen;
     partijen = config.partijen;
-
-    if (stemwijzerTItel) {
-      stemwijzerTitel.textContent = config.stemwijzernaam;
-    }
-    if (stemwijzerBeschrijving) {
-      stemwijzerBeschrijving.textContent = config.stemwijzerbeschrijving;
-    }
-
 }
 
 function progressbarEvolve() {
